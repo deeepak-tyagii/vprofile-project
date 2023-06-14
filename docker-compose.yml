@@ -2,21 +2,19 @@ services:
   vprodb:
     build: 
       context: ./Docker-files/db
-      image: deepaktyagi048/vprofiledb
-      container_name: vprodb
+    image: deepaktyagi048/vprofiledb
+    container_name: vprodb
     ports:
       - "3306:3306"
     volumes:
       - vprodbdata:/var/lib/mysql
 
   vprocache01:
-    build:
-      image: memcached
-      ports:
+    image: memcached
+    ports:
         - "11211:11211"
 
   vpromq01:
-    build:
       image: rabbitmq
       ports:
         - "15672:15672"
@@ -27,8 +25,8 @@ services:
   vproapp:
     build: 
       context: ./Docker-files/app
-      image: deepaktyagi048/vprofileapp
-      container-name: vproapp    
+    image: deepaktyagi048/vprofileapp
+    container-name: vproapp    
     ports:
       - "8080:8080"
     volumes:
@@ -37,8 +35,8 @@ services:
   vproweb:
     build: 
       context: ./Docker-files/web
-      image: deepaktyagi048/vprofileweb
-      container-name: vproweb   
+    image: deepaktyagi048/vprofileweb
+    container-name: vproweb   
     ports:
       - "80:80"
 
